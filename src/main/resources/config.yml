@@ -1,0 +1,11 @@
+# TekMoniOnKill configuration file!
+# Step 1. Configure how much money the plugin will take on death. (double)
+moneytotake: 10.0
+moneytogive: 25.0
+# Step 2. (optional) Customize the plugin's messages!
+# Message to send to the killer. (String) [Use {1] for the amount of money they'll receive and {2} for the player they killed)
+msg.tokiller: wow u r gayne {1} credit becus u kill {2}
+# Message to send to the victim. (String) [Use {1] for the amount of money that has been withdrawn from their account and {2} for the player who killed them)
+msg.tovictim: u lost {1} kredits 4 bein kill bi {2}
+# Message to send if the victim does not have enough money.
+msg.notenough: u hav no kredits faget

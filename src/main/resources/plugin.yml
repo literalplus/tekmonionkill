@@ -1,0 +1,7 @@
+name: TekMoniOnKill
+version: 1.0-AWSUM
+authors: [xxyy, Literally]
+main: io.github.xxyy.tekmonionkill.TMOKPlugin
+website: http://xxyy.github.io/
+depend: [Vault]
+softdepend: [Essentials, iConomy]
