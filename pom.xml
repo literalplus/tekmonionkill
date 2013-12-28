@@ -4,9 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <repositories>
+        <repository>
+            <id>xxyy-repo</id>
+            <url>http://server.nowak-at.net:8080/nexus-latest/content/groups/public/</url>
+        </repository>
+    </repositories>
+
     <groupId>io.github.xxyy</groupId>
     <artifactId>tekmonionkill</artifactId>
-    <version>1.0-AWSUM</version>
+    <version>1.1</version>
     <dependencies>
         <dependency>
             <groupId>org.bukkit</groupId>
