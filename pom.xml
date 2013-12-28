@@ -7,7 +7,7 @@
     <repositories>
         <repository>
             <id>xxyy-repo</id>
-            <url>http://server.nowak-at.net:8080/nexus-latest/content/groups/public/</url>
+            <url>http://server.nowak-at.net:8042/nexus-latest/content/groups/public/</url>
         </repository>
     </repositories>
 
