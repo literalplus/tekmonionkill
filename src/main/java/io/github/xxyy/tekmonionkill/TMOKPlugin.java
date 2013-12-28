@@ -61,6 +61,10 @@ public class TMOKPlugin extends JavaPlugin implements Listener {
         return economy.hasAccount(plrName) || economy.createPlayerAccount(plrName);
     }
 
+    private void sendMultilineMessage(final String message, final Player plr){
+        plr.sendMessage(message.split("\n")); //Supports \n in config messages
+    }
+
     @EventHandler(priority=EventPriority.LOW)
     public void onDeath(final PlayerDeathEvent evt){
         final Player plrVictim = evt.getEntity();
@@ -70,14 +74,14 @@ public class TMOKPlugin extends JavaPlugin implements Listener {
         tryCreateAccount(plrKiller.getName());
 
         if(!economy.has(plrVictim.getName(), amountToTake)){
-            plrVictim.sendMessage(getFormattedMessage("notenough"));
+            sendMultilineMessage(getFormattedMessage("notenough"), plrVictim);
         }else{
             economy.withdrawPlayer(plrVictim.getName(), amountToTake);
-            plrVictim.sendMessage(
-                    MessageFormat.format(getFormattedMessage("tovictim"), amountToTake, plrKiller.getName()));
+            sendMultilineMessage(
+                    MessageFormat.format(getFormattedMessage("tovictim"), amountToTake, plrKiller.getName()), plrVictim);
         }
 
         economy.depositPlayer(plrKiller.getName(), amountToGive);
-        plrKiller.sendMessage(MessageFormat.format(getFormattedMessage("tokiller"), amountToGive, plrVictim.getName()));
+        sendMultilineMessage(MessageFormat.format(getFormattedMessage("tokiller"), amountToGive, plrVictim.getName()), plrKiller);
     }
 }
