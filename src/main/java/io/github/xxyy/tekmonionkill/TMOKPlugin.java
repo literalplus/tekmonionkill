@@ -15,7 +15,7 @@ import java.text.MessageFormat;
 import java.util.logging.Level;
 
 /**
- * Main class of the plugin. YOu know, that one that takes money on death.
+ * Main class of the plugin. You know, that one that takes money on death.
  *
  * @author <a href="http://xxyy.github.io/">xxyy</a>
  * @since 28.12.13
@@ -58,10 +58,7 @@ public class TMOKPlugin extends JavaPlugin implements Listener {
     }
 
     private boolean tryCreateAccount(final String plrName){
-        if(!economy.hasAccount(plrName)){
-            return economy.createPlayerAccount(plrName);
-        }
-        return true;
+        return economy.hasAccount(plrName) || economy.createPlayerAccount(plrName);
     }
 
     @EventHandler(priority=EventPriority.LOW)
