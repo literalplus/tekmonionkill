@@ -10,7 +10,6 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
 import java.text.MessageFormat;
 import java.util.logging.Level;
 
@@ -25,8 +24,7 @@ public class TMOKPlugin extends JavaPlugin implements Listener {
     private double amountToTake;
     private double amountToGive;
 
-    private boolean setupEconomy()
-    {
+    private boolean setupEconomy() {
         RegisteredServiceProvider<Economy> economyProvider = getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
         if (economyProvider != null) {
             economy = economyProvider.getProvider();
@@ -35,17 +33,15 @@ public class TMOKPlugin extends JavaPlugin implements Listener {
         return (economy != null);
     }
 
-    private String getFormattedMessage(final String messageId){
-        return ChatColor.translateAlternateColorCodes('&', getConfig().getString("msg."+messageId));
+    private String getFormattedMessage(final String messageId) {
+        return ChatColor.translateAlternateColorCodes('&', getConfig().getString("msg." + messageId));
     }
 
     @Override
-    public void onEnable(){
-        if(!new File(getDataFolder(), "config.yml").exists()){
-            saveDefaultConfig();
-        }
+    public void onEnable() {
+        saveDefaultConfig();
 
-        if(!setupEconomy()){
+        if (!setupEconomy()) {
             getLogger().log(Level.SEVERE, "Could not find Vault Economy Provider! Install one, for example Essentials.");
             getServer().getPluginManager().disablePlugin(this);
             return;
@@ -57,25 +53,25 @@ public class TMOKPlugin extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(this, this);
     }
 
-    private boolean tryCreateAccount(final String plrName){
+    private boolean tryCreateAccount(final String plrName) {
         return economy.hasAccount(plrName) || economy.createPlayerAccount(plrName);
     }
 
-    private void sendMultilineMessage(final String message, final Player plr){
+    private void sendMultilineMessage(final String message, final Player plr) {
         plr.sendMessage(message.split("\n")); //Supports \n in config messages
     }
 
-    @EventHandler(priority=EventPriority.LOW)
-    public void onDeath(final PlayerDeathEvent evt){
+    @EventHandler(priority = EventPriority.LOW)
+    public void onDeath(final PlayerDeathEvent evt) {
         final Player plrVictim = evt.getEntity();
         final Player plrKiller = evt.getEntity().getKiller();
 
         tryCreateAccount(plrVictim.getName());
         tryCreateAccount(plrKiller.getName());
 
-        if(!economy.has(plrVictim.getName(), amountToTake)){
+        if (!economy.has(plrVictim.getName(), amountToTake)) {
             sendMultilineMessage(getFormattedMessage("notenough"), plrVictim);
-        }else{
+        } else {
             economy.withdrawPlayer(plrVictim.getName(), amountToTake);
             sendMultilineMessage(
                     MessageFormat.format(getFormattedMessage("tovictim"), amountToTake, plrKiller.getName()), plrVictim);
