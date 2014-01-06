@@ -63,8 +63,11 @@ public class TMOKPlugin extends JavaPlugin implements Listener {
 
     @EventHandler(priority = EventPriority.LOW)
     public void onDeath(final PlayerDeathEvent evt) {
-        final Player plrVictim = evt.getEntity();
         final Player plrKiller = evt.getEntity().getKiller();
+        if (plrKiller == null) {
+            return;
+        }
+        final Player plrVictim = evt.getEntity();
 
         tryCreateAccount(plrVictim.getName());
         tryCreateAccount(plrKiller.getName());
