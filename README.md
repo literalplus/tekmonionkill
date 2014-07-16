@@ -26,4 +26,4 @@ This project uses Apache Maven.
 
 Artifacts
 ---------
-Get the latest project artifacts from http://server.nowak-at.net:8042/jenkins/job/public~TekMoniOnKill/.
+Get the latest project artifacts from http://ci.nowak-at.net/job/public~TekMoniOnKill/.
