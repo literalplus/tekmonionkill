@@ -58,6 +58,10 @@ public class TMOKPlugin extends JavaPlugin implements Listener {
     }
 
     private void sendMultilineMessage(final String message, final Player plr) {
+        if (message == null || message.equals("none")) {
+            return;
+        }
+
         plr.sendMessage(message.split("\n")); //Supports \n in config messages
     }
 
@@ -72,15 +76,19 @@ public class TMOKPlugin extends JavaPlugin implements Listener {
         tryCreateAccount(plrVictim.getName());
         tryCreateAccount(plrKiller.getName());
 
-        if (!economy.has(plrVictim.getName(), amountToTake)) {
-            sendMultilineMessage(getFormattedMessage("notenough"), plrVictim);
-        } else {
-            economy.withdrawPlayer(plrVictim.getName(), amountToTake);
-            sendMultilineMessage(
-                    MessageFormat.format(getFormattedMessage("tovictim"), amountToTake, plrKiller.getName()), plrVictim);
+        if (amountToTake != 0) { //Don't take nothing and don't notify players then
+            if (!economy.has(plrVictim.getName(), amountToTake)) { //Can't take anything if no money available
+                sendMultilineMessage(getFormattedMessage("notenough"), plrVictim);
+            } else {
+                economy.withdrawPlayer(plrVictim.getName(), amountToTake);
+                sendMultilineMessage(
+                        MessageFormat.format(getFormattedMessage("tovictim"), amountToTake, plrKiller.getName()), plrVictim);
+            }
         }
 
-        economy.depositPlayer(plrKiller.getName(), amountToGive);
-        sendMultilineMessage(MessageFormat.format(getFormattedMessage("tokiller"), amountToGive, plrVictim.getName()), plrKiller);
+        if (amountToGive != 0) {
+            economy.depositPlayer(plrKiller.getName(), amountToGive);
+            sendMultilineMessage(MessageFormat.format(getFormattedMessage("tokiller"), amountToGive, plrVictim.getName()), plrKiller);
+        }
     }
 }
