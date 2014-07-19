@@ -3,11 +3,12 @@ tekmonionkill
 
 (Yes, that means "take money on kill". Tell me if you have a better name)
 
-Very simple Spigot plugin that takes a defined amount of (Vault) money from the victim of a player kill (and gives money to the killer)
+Very simple Spigot (it also works on Bukkit in case you have to use that) plugin that takes a defined amount of 
+(Vault) money from the victim of a player kill (and gives money to the killer).
 
-Idea by @EncryptedCurse.
+Idea by @[EncryptedCurse](https://github.com/EncryptedCurse).
 
-Compiling [![Build Status](http://ci.nowak-at.net/buildStatus/icon?job=public~TekMoniOnKill)](http://ci.nowak-at.net/job/public~TekMoniOnKill/)
+Compiling [![Build Status](http://ci.nowak-at.net/job/public~TekMoniOnKill/badge/icon)](http://ci.nowak-at.net/job/public~TekMoniOnKill/)
 ---------
 This project uses Apache Maven for building. If you ~~are not pro enough to~~ don't know how to use it, take this command line:
 ````bash
