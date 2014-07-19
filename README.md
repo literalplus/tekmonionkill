@@ -10,12 +10,12 @@ Idea by @[EncryptedCurse](https://github.com/EncryptedCurse).
 
 Compiling [![Build Status](http://ci.nowak-at.net/job/public~TekMoniOnKill/badge/icon)](http://ci.nowak-at.net/job/public~TekMoniOnKill/)
 ---------
-This project uses Apache Maven for building. If you ~~are not pro enough to~~ don't know how to use it, take this command line:
+This project uses Apache Maven for building. If you ~~are not pro enough to~~ don't know how to use that, take this command line:
 ````bash
 $ mvn clean install
 ````
 
-Or, if you're too lazy to build it yourself but not lazy enough to quit readin after the first paragraph, you can also
+Or, if you're too lazy to build it yourself but not lazy enough to quit reading after the first paragraph, you can also
 get the latest project artifacts from http://ci.nowak-at.net/job/public~TekMoniOnKill/.
 
 Support
