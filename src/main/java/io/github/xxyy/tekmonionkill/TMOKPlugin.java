@@ -1,6 +1,7 @@
 package io.github.xxyy.tekmonionkill;
 
 import net.milkbowl.vault.economy.Economy;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -73,22 +74,25 @@ public class TMOKPlugin extends JavaPlugin implements Listener {
             return;
         }
 
-        tryCreateAccount(plrVictim.getName());
-        tryCreateAccount(plrKiller.getName());
+        Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
+            tryCreateAccount(plrVictim.getName());
+            tryCreateAccount(plrKiller.getName());
 
-        if (amountToTake != 0) { //Don't take nothing and don't notify players then
-            if (!economy.has(plrVictim.getName(), amountToTake)) { //Can't take anything if no money available
-                sendMultilineMessage(getFormattedMessage("notenough"), plrVictim);
-            } else {
-                economy.withdrawPlayer(plrVictim.getName(), amountToTake);
-                sendMultilineMessage(
-                        MessageFormat.format(getFormattedMessage("tovictim"), amountToTake, plrKiller.getName()), plrVictim);
+            if (amountToTake != 0) { //Don't take nothing and don't notify players then
+                if (!economy.has(plrVictim.getName(), amountToTake)) { //Can't take anything if no money available
+                    sendMultilineMessage(getFormattedMessage("notenough"), plrVictim);
+                } else {
+                    economy.withdrawPlayer(plrVictim.getName(), amountToTake);
+                    sendMultilineMessage(
+                            MessageFormat.format(getFormattedMessage("tovictim"), amountToTake, plrKiller.getName()), plrVictim);
+                }
             }
-        }
 
-        if (amountToGive != 0) {
-            economy.depositPlayer(plrKiller.getName(), amountToGive);
-            sendMultilineMessage(MessageFormat.format(getFormattedMessage("tokiller"), amountToGive, plrVictim.getName()), plrKiller);
-        }
+            if (amountToGive != 0) {
+                economy.depositPlayer(plrKiller.getName(), amountToGive);
+                sendMultilineMessage(MessageFormat.format(getFormattedMessage("tokiller"), amountToGive, plrVictim.getName()), plrKiller);
+            }
+        });
+
     }
 }
