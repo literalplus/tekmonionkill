@@ -8,7 +8,7 @@ Very simple Spigot (it also works on Bukkit in case you have to use that) plugin
 
 Idea by @[EncryptedCurse](https://github.com/EncryptedCurse).
 
-Compiling [![Build Status](http://ci.nowak-at.net/job/public~TekMoniOnKill/badge/icon)](http://ci.nowak-at.net/job/public~TekMoniOnKill/)
+Compiling [![Build Status](http://ci.l1t.li/job/public~TekMoniOnKill/badge/icon)](http://ci.l1t.li/job/public~TekMoniOnKill/)
 ---------
 This project uses Apache Maven for building. If you ~~are not pro enough to~~ don't know how to use that, take this command line:
 ````bash
@@ -16,13 +16,13 @@ $ mvn clean install
 ````
 
 Or, if you're too lazy to build it yourself but not lazy enough to quit reading after the first paragraph, you can also
-get the latest project artifacts from http://ci.nowak-at.net/job/public~TekMoniOnKill/.
+get the latest project artifacts from http://ci.l1t.li/job/public~TekMoniOnKill/.
 
 Support
 -------
 In the remote case that you should need any help using this plugin, you can join [#lit on irc.spi.gt](http://irc.spi.gt/iris/?channels=lit)
 and patiently wait for help. (i.e. ask your question and then wait for a reply. Don't quit if you don't get one after 
-five minutes. It may also help to mention Literallie in your message since that send him a notification if he's awake)
+five minutes. It may also help to mention Literallie in your message since that sends him a notification if he's awake)
 
 Contributing
 ------------
