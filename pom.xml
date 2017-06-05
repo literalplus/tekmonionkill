@@ -7,7 +7,7 @@
     <repositories>
         <repository>
             <id>xxyy-repo</id>
-            <url>http://repo.nowak-at.net/public-all/</url>
+            <url>http://repo.l1t.li/public-all/</url>
         </repository>
     </repositories>
 
